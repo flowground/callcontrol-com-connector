@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "phoneNumber": {
+            "required": true,
+            "type": "string"
+        },
+        "userPhoneNumber": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

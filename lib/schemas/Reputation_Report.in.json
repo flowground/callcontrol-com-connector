@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Call Report\r\nPhoneNumber, \r\nCaller name(optional), \r\nCall category(optional), \r\nComment or tags(free text) (optional), \r\nUnwanted call  - yes/no(optional),",
+            "properties": {
+                "CallTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "CallerType": {
+                    "enum": [
+                        "Unknown",
+                        "Telemarketing",
+                        "Collection_Agency",
+                        "Political",
+                        "Surveyor",
+                        "Prank_Call",
+                        "Fund_Raiser",
+                        "Other_Commercial",
+                        "Scam",
+                        "VOIP",
+                        "Business",
+                        "Reminder_Notification_Call",
+                        "Junk_Fax",
+                        "Fax_Machine",
+                        "Spam_Text",
+                        "RoboCall",
+                        "NotSpam",
+                        "Callback"
+                    ],
+                    "type": "string"
+                },
+                "Comment": {
+                    "type": "string"
+                },
+                "IpAddress": {
+                    "type": "string"
+                },
+                "Latitude": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "Longitude": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "ReportedCallerId": {
+                    "type": "string"
+                },
+                "ReportedCallerName": {
+                    "type": "string"
+                },
+                "Reporter": {
+                    "type": "string"
+                },
+                "UnwantedCall": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

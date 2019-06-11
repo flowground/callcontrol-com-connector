@@ -1,0 +1,160 @@
+{
+    "title": "Call Control",
+    "description": "API for blocking phone calls with Call Control. Data is from crowdsourced community blacklist from 12+ million users and government agencies (FTC, FCC, IRS) Try with api_key 'demo', hit explore above, and then try phone numbers 18008472911,13157244022,17275567300,18008276655,12061231234.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/callcontrol.com/2015-11-01/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.callcontrol.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_apiKey": {
+                "label": "apiKey (apiKey)",
+                "viewClass": "TextFieldView",
+                "note": "API Key Authentication"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Complaints_Complaints": {
+            "main": "./lib/actions/Complaints_Complaints.js",
+            "title": "Complaints: Free service (with registration), providing community and government complaint lookup by phone number for up to 2,000 queries per month.  Details include number complaint rates from (FTC, FCC, IRS, Indiana Attorney  General) and key entity tag extractions from complaints.",
+            "description": "This is the main funciton to get data out of the call control reporting system<br />\r\n            Try with api_key 'demo' and phone numbers 18008472911, 13157244022, 17275567300, 18008276655, and 12061231234 (last one not spam)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Complaints_Complaints.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseApi_GetUser": {
+            "main": "./lib/actions/EnterpriseApi_GetUser.js",
+            "title": "Enterprise  GET: GetUser\r\nReturns the current information from the user;  try 12066194123 as demo",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseApi_GetUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseApi_ShouldBlock": {
+            "main": "./lib/actions/EnterpriseApi_ShouldBlock.js",
+            "title": "Enterprise  GET: ShouldBlock\r\nSimple Enteprise which returns a call block proceed decision.",
+            "description": "This returns information required to perform basic call blocking behaviors\r\n            Try with api_key 'demo' and phone numbers 18008472911, 13157244022, 17275567300, 18008276655, and 12061231234 (last one not spam)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseApi_ShouldBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseApi_UpsertUser": {
+            "main": "./lib/actions/EnterpriseApi_UpsertUser.js",
+            "title": "UpsertUser: insert or update all properties from a user\r\nPhoneNumber\r\nWhiteList (list of phone numbers to whitelist)\r\nBlackList (list of phone numbers to blacklist)\r\nQuietHourList (list of quiet hour objects)\r\nUseCommunityBlacklist (enable / disable community blacklist) default true\r\nBreakThroughQhWithMultipleCalls (break through quiet hours with two calls in 3 minutes)\r\nWhiteListBreaksQh (break through quiet hours for whitelist)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseApi_UpsertUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Reputation_Report": {
+            "main": "./lib/actions/Reputation_Report.js",
+            "title": "Report: report spam calls received to better tune our algorithms based upon spam calls you receive",
+            "description": "This returns information required to perform basic call blocking behaviors<br />\r\n            Try with api_key 'demo' and phone numbers 18008472911, 13157244022, 17275567300, 18008276655, and 12061231234 (last one not spam)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Reputation_Report.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Reputation_Reputation": {
+            "main": "./lib/actions/Reputation_Reputation.js",
+            "title": "Reputation:\r\nPremium service which returns a reputation informaiton of a phone number via API.",
+            "description": "This returns information required to perform basic call blocking behaviors<br />\r\n            Try with api_key 'demo' and phone numbers 18008472911, 13157244022, 17275567300, 18008276655, and 12061231234 (last one not spam)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Reputation_Reputation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

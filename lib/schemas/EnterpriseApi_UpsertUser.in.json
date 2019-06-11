@@ -1,0 +1,108 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "Age": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "BlackList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "BlockBehavior": {
+                    "enum": [
+                        "allow",
+                        "voiceMail",
+                        "block"
+                    ],
+                    "type": "string"
+                },
+                "BreakThroughQhWithMultipleCalls": {
+                    "type": "boolean"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "Gender": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "MiddleName": {
+                    "type": "string"
+                },
+                "PhoneNumbeRegion": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "QuietHourList": {
+                    "items": {
+                        "properties": {
+                            "DayOfWeekList": {
+                                "items": {
+                                    "enum": [
+                                        "Sunday",
+                                        "Monday",
+                                        "Tuesday",
+                                        "Wednesday",
+                                        "Thursday",
+                                        "Friday",
+                                        "Saturday"
+                                    ],
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "DurationMin": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "StartHourLocal": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "StartMinLocal": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "TimeZoneName": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "Salutation": {
+                    "type": "string"
+                },
+                "Suffix": {
+                    "type": "string"
+                },
+                "UseCommunityBlacklist": {
+                    "type": "boolean"
+                },
+                "WhiteList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "WhiteListBreaksQh": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
